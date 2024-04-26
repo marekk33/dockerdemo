@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: jakakolwiek
+      MYSQL_USER: marek
+      MYSQL_PASSWORD: root
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # opcjonalne, jeśli chcesz zainicjować bazę danych
+    ports:
+      - "3306:3306"
+
+  java:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
