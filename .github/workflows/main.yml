@@ -35,8 +35,8 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t your-docker-username/your-image-name:latest .
-        docker push your-docker-username/your-image-name:latest
+        docker build -t marekk33/repo:latest .
+        docker push marekk33/repo:latest
 
     - name: SSH into Virtual Machine and deploy
       uses: appleboy/ssh-action@master
@@ -49,5 +49,5 @@ jobs:
           docker pull mysql:latest
           docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=jakakolwiek -e MYSQL_USER=marek -e MYSQL_PASSWORD=root -p 3306:3306 mysql:latest
           
-          docker pull your-docker-username/your-image-name:latest
-          docker run -d --name your-container-name -p 8080:8080 your-docker-username/your-image-name:latest
+          docker pull marekk33/repo:latest
+          docker run -d --name your-container-name -p 8080:8080 marekk33/repo:latest
